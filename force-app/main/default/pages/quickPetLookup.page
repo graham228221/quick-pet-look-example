@@ -1,0 +1,22 @@
+<apex:page Controller="quickPetLookupController" showHeader="false" lightningStylesheets="true">
+<br/>
+<div style="width:75%;margin-left:auto;margin-right:auto;">
+<h3>Select a Dog:</h3>
+<apex:form>
+    <apex:selectList value="{!petId}" size="1">
+        <apex:selectOptions value="{!petOptions}"/>
+        <apex:actionSupport event="onchange" action="{!selectPet}" reRender="recordPanel"/>
+    </apex:selectList>
+</apex:form>
+<br/>
+<apex:outputPanel id="recordPanel">
+    <apex:pageBlock>
+        <apex:pageBlockSection title="Your Selected Pet:" collapsible="false" >
+        <apex:outputField value="{!pet.Name}"/>
+        <apex:outputField value="{!pet.Account__r.Name}"/>
+        <apex:outputField value="{!pet.Pet_Image__c}"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:outputPanel>
+</div>
+</apex:page>
